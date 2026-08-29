@@ -1,6 +1,6 @@
 # Utilities
 
-An Android super app: one launcher icon, nineteen small tools. The home screen
+An Android super app: one launcher icon, twenty-two small tools. The home screen
 groups mini apps by category with a search box; tapping one opens it full screen.
 
 Built with Kotlin, Jetpack Compose and Material 3 (dynamic color on Android 12+,
@@ -27,6 +27,8 @@ light and dark themes).
 | 📏 Unit Converter | Length, mass, temperature and volume. |
 | 📊 Percentage | Percent of, is-what-percent, and percent change. |
 | 📅 Date Calculator | Days between two dates, add days, and age. |
+| 🏷️ Discount and VAT | Take a percentage off, add tax on, or strip tax back out of a gross price. |
+| 🌍 Time Zones | One moment shown in eighteen zones, daylight saving included. |
 
 ### Text and codes
 
@@ -36,6 +38,7 @@ light and dark themes).
 | ✍️ Text Tools | Change case, count characters and words, tidy whitespace. |
 | ⬛ QR Generator | Turns text or a link into a QR code. |
 | 📷 QR Scanner | Reads a QR code with the camera. |
+| 📶 WiFi QR | Shares a network as a code another phone can scan to join. |
 
 ### Device
 
@@ -62,7 +65,7 @@ supported device is Android 8.0 (API 26).
 
 ## Permissions
 
-Sixteen of the nineteen mini apps need no permission at all.
+Nineteen of the twenty-two mini apps need no permission at all.
 
 - **Camera** — QR Scanner only. Declared optional, so the app still installs on a
   device without one.
@@ -83,6 +86,8 @@ app/src/main/java/com/viennnaa/utilities/
 │   └── MiniAppCatalog.kt        the registry — every mini app is listed here
 ├── core/
 │   ├── options/                 list-editing rules shared by the list-building mini apps
+│   ├── money/                   cent-exact amounts and basis-point rates
+│   ├── qr/                      QR encoding, shared by the mini apps that produce codes
 │   ├── storage/                 DataStore-backed per mini app settings, and list encoding
 │   ├── sensors/                 lifecycle-aware sensor subscription
 │   └── shortcuts/               launcher shortcuts built from the catalog

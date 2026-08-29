@@ -5,13 +5,15 @@ what was built, and the ideas that came up along the way but were not taken.
 
 ## Shipped
 
-All nineteen mini apps are in `MiniAppCatalog`, grouped into four categories on
+All twenty-two mini apps are in `MiniAppCatalog`, grouped into four categories on
 the home screen. See `README.md` for what each one does.
 
 - [x] **Decide** — Random Number, Choice Maker, List Picker, Dice Roller,
       Team Splitter, Rock Paper Scissors
-- [x] **Calculate** — Tip Splitter, Unit Converter, Percentage, Date Calculator
-- [x] **Text and codes** — Password Generator, Text Tools, QR Generator, QR Scanner
+- [x] **Calculate** — Tip Splitter, Unit Converter, Percentage, Date Calculator,
+      Discount and VAT, Time Zones
+- [x] **Text and codes** — Password Generator, Text Tools, QR Generator, QR Scanner,
+      WiFi QR
 - [x] **Device** — Flashlight, Bubble Level, Compass, Ruler, Stopwatch and Timer
 
 ### Plumbing
@@ -41,12 +43,34 @@ Ideas that came up and were deliberately left out, with the reason.
   covers the alert. Exact alarms would additionally survive the process being
   killed, at the cost of `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`.
 
+## Ideas not yet taken
+
+Sketched but not built. Grouped by what each would cost, which is the axis that
+actually decides the order.
+
+**Nearly free — the dependency or component is already here**
+
+- Other barcode formats (EAN-13, Code 128) through the ZXing writer already in
+- Light meter and barometer, on the existing lifecycle-aware `SensorEffect`
+- Magnifier, on the CameraX preview the QR scanner already sets up
+
+**Pure logic, no new anything**
+
+- Loan calculator, number base converter, Base64 and URL encoding, hash
+  generator, Roman numerals, screen test, device info, bingo caller
+
+**Needs a permission the app does not yet ask for**
+
+- Sound meter (`RECORD_AUDIO`), step counter (`ACTIVITY_RECOGNITION`),
+  speedometer (location)
+
 ## Worth doing next
 
 - [ ] **Reorderable home screen or favourites.** Nineteen tiles is where a fixed
       order starts to chafe; the catalog is already the single source for ordering
-- [ ] **Share actions.** QR Generator has no way to export its code, and Text
-      Tools and Password Generator only copy to the clipboard
+- [ ] **Share actions.** QR Generator and WiFi QR have no way to export their
+      codes, and Text Tools and Password Generator only copy to the clipboard.
+      This is a gap in shipped features rather than a missing one
 - [ ] **Widen instrumented coverage.** The current tests cover the home screen and
       navigation; individual mini app interactions are still only unit tested
 - [ ] **Translations.** All user-facing text is already in `strings.xml`, so this
@@ -69,4 +93,7 @@ Ideas that came up and were deliberately left out, with the reason.
   `core/sensors`, `core/shortcuts`, and the `ui/components` composables. Reach for
   those before writing a third copy of something
 - Number formatting that gets trimmed is pinned to `Locale.US`; parsing accepts
-  either decimal separator
+  either decimal separator. Trimming a trailing '.' after formatting in a
+  comma-decimal locale leaves a stray separator, so the formatters have tests
+  that set one — the default-locale tests pass on a dot machine either way
+- Money is whole cents and basis points in `core/money`, never a Double
