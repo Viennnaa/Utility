@@ -245,6 +245,25 @@
     <string name="ruler_hint">Lay a card or coin against the scale and nudge until it matches.</string>
     <string name="ruler_unavailable">This device does not report a usable screen density.</string>
 
+    <!-- Stopwatch and Timer -->
+    <string name="stopwatch_title">Stopwatch</string>
+    <string name="stopwatch_tagline">Time things, and count down</string>
+    <string name="stopwatch_mode_stopwatch">Stopwatch</string>
+    <string name="stopwatch_mode_timer">Timer</string>
+    <string name="stopwatch_start">Start</string>
+    <string name="stopwatch_pause">Pause</string>
+    <string name="stopwatch_lap">Lap</string>
+    <string name="stopwatch_reset">Reset</string>
+    <string name="stopwatch_lap_number">Lap %1$d</string>
+    <string name="stopwatch_preset_minutes">%1$d min</string>
+    <string name="stopwatch_channel_ongoing">Running timers</string>
+    <string name="stopwatch_channel_alert">Timer finished</string>
+    <string name="stopwatch_notification_stopwatch">Stopwatch running</string>
+    <string name="stopwatch_notification_timer">Timer running</string>
+    <string name="stopwatch_notification_stop">Stop</string>
+    <string name="stopwatch_notification_done_title">Time is up</string>
+    <string name="stopwatch_notification_done_text">Your timer has finished.</string>
+
     <!-- Shared -->
     <string name="options_add">Add</string>
     <string name="options_error_duplicate">That is already in the list.</string>

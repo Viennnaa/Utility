@@ -72,6 +72,7 @@ val AccentFlashlight = Color(0xFFFFC107)
 val AccentLevel = Color(0xFF14B8A6)
 val AccentCompass = Color(0xFFDC2626)
 val AccentRuler = Color(0xFF8B5CF6)
+val AccentStopwatch = Color(0xFF0891B2)
 
 // "Yes" / "No" answer colors, tuned per theme so both stay readable.
 internal val YesLight = Color(0xFF1E7A46)

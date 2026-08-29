@@ -24,4 +24,5 @@ object MiniAppIds {
     const val LEVEL = "bubble-level"
     const val COMPASS = "compass"
     const val RULER = "ruler"
+    const val STOPWATCH = "stopwatch"
 }

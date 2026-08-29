@@ -12,6 +12,7 @@ import com.viennnaa.utilities.feature.passwordgen.PasswordGenScreen
 import com.viennnaa.utilities.feature.percentage.PercentageScreen
 import com.viennnaa.utilities.feature.randomnumber.RandomNumberScreen
 import com.viennnaa.utilities.feature.rps.RpsScreen
+import com.viennnaa.utilities.feature.stopwatch.StopwatchScreen
 import com.viennnaa.utilities.feature.ruler.RulerScreen
 import com.viennnaa.utilities.feature.teamsplitter.TeamSplitterScreen
 import com.viennnaa.utilities.feature.texttools.TextToolsScreen
@@ -29,6 +30,7 @@ import com.viennnaa.utilities.ui.theme.AccentPercentage
 import com.viennnaa.utilities.ui.theme.AccentRandomNumber
 import com.viennnaa.utilities.ui.theme.AccentRps
 import com.viennnaa.utilities.ui.theme.AccentRuler
+import com.viennnaa.utilities.ui.theme.AccentStopwatch
 import com.viennnaa.utilities.ui.theme.AccentTeamSplitter
 import com.viennnaa.utilities.ui.theme.AccentTextTools
 import com.viennnaa.utilities.ui.theme.AccentTipSplitter
@@ -184,6 +186,15 @@ val MiniAppCatalog: List<MiniApp> = listOf(
         emoji = "📐",
         accent = AccentRuler,
         screen = { onBack -> RulerScreen(onBack = onBack) },
+    ),
+    MiniApp(
+        id = MiniAppIds.STOPWATCH,
+        titleRes = R.string.stopwatch_title,
+        taglineRes = R.string.stopwatch_tagline,
+        category = MiniAppCategory.DEVICE,
+        emoji = "⏱️",
+        accent = AccentStopwatch,
+        screen = { onBack -> StopwatchScreen(onBack = onBack) },
     ),
 )
 
