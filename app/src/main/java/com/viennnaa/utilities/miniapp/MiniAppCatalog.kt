@@ -10,6 +10,8 @@ import com.viennnaa.utilities.feature.level.LevelScreen
 import com.viennnaa.utilities.feature.listpicker.ListPickerScreen
 import com.viennnaa.utilities.feature.passwordgen.PasswordGenScreen
 import com.viennnaa.utilities.feature.percentage.PercentageScreen
+import com.viennnaa.utilities.feature.qrgen.QrGenScreen
+import com.viennnaa.utilities.feature.qrscan.QrScanScreen
 import com.viennnaa.utilities.feature.randomnumber.RandomNumberScreen
 import com.viennnaa.utilities.feature.rps.RpsScreen
 import com.viennnaa.utilities.feature.stopwatch.StopwatchScreen
@@ -27,6 +29,8 @@ import com.viennnaa.utilities.ui.theme.AccentLevel
 import com.viennnaa.utilities.ui.theme.AccentListPicker
 import com.viennnaa.utilities.ui.theme.AccentPasswordGen
 import com.viennnaa.utilities.ui.theme.AccentPercentage
+import com.viennnaa.utilities.ui.theme.AccentQrGen
+import com.viennnaa.utilities.ui.theme.AccentQrScan
 import com.viennnaa.utilities.ui.theme.AccentRandomNumber
 import com.viennnaa.utilities.ui.theme.AccentRps
 import com.viennnaa.utilities.ui.theme.AccentRuler
@@ -150,6 +154,24 @@ val MiniAppCatalog: List<MiniApp> = listOf(
         emoji = "✍️",
         accent = AccentTextTools,
         screen = { onBack -> TextToolsScreen(onBack = onBack) },
+    ),
+    MiniApp(
+        id = MiniAppIds.QR_GEN,
+        titleRes = R.string.qr_gen_title,
+        taglineRes = R.string.qr_gen_tagline,
+        category = MiniAppCategory.TEXT_AND_CODES,
+        emoji = "⬛",
+        accent = AccentQrGen,
+        screen = { onBack -> QrGenScreen(onBack = onBack) },
+    ),
+    MiniApp(
+        id = MiniAppIds.QR_SCAN,
+        titleRes = R.string.qr_scan_title,
+        taglineRes = R.string.qr_scan_tagline,
+        category = MiniAppCategory.TEXT_AND_CODES,
+        emoji = "📷",
+        accent = AccentQrScan,
+        screen = { onBack -> QrScanScreen(onBack = onBack) },
     ),
     MiniApp(
         id = MiniAppIds.FLASHLIGHT,

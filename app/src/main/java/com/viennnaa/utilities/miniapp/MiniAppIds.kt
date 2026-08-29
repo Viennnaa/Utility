@@ -25,4 +25,6 @@ object MiniAppIds {
     const val COMPASS = "compass"
     const val RULER = "ruler"
     const val STOPWATCH = "stopwatch"
+    const val QR_GEN = "qr-generator"
+    const val QR_SCAN = "qr-scanner"
 }

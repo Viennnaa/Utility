@@ -264,6 +264,32 @@
     <string name="stopwatch_notification_done_title">Time is up</string>
     <string name="stopwatch_notification_done_text">Your timer has finished.</string>
 
+    <!-- QR Generator -->
+    <string name="qr_gen_title">QR Generator</string>
+    <string name="qr_gen_tagline">Turn text or a link into a code</string>
+    <string name="qr_gen_input">Text or link</string>
+    <string name="qr_gen_placeholder">https://example.com</string>
+    <string name="qr_gen_empty_hint">Type something to make a code</string>
+    <string name="qr_gen_too_long">That is too much text for one code. Shorten it, or lower the correction level.</string>
+    <string name="qr_gen_correction_heading">Error correction</string>
+    <string name="qr_gen_correction_low">Low</string>
+    <string name="qr_gen_correction_medium">Medium</string>
+    <string name="qr_gen_correction_quartile">High</string>
+    <string name="qr_gen_correction_high">Highest</string>
+    <string name="qr_gen_correction_note">More correction survives more damage, but packs the code tighter.</string>
+    <string name="cd_qr_gen_code">The generated QR code</string>
+
+    <!-- QR Scanner -->
+    <string name="qr_scan_title">QR Scanner</string>
+    <string name="qr_scan_tagline">Read a code with the camera</string>
+    <string name="qr_scan_needs_camera">The scanner needs the camera.</string>
+    <string name="qr_scan_denied">Camera access was turned down. You can grant it in Settings.</string>
+    <string name="qr_scan_hint">Point the camera at a QR code.</string>
+    <string name="qr_scan_again">Scan again</string>
+    <string name="qr_scan_open_link">Open link</string>
+    <string name="qr_scan_open_email">Send email</string>
+    <string name="qr_scan_open_phone">Call number</string>
+
     <!-- Shared -->
     <string name="options_add">Add</string>
     <string name="options_error_duplicate">That is already in the list.</string>
