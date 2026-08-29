@@ -15,19 +15,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FilterChip
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -51,6 +45,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.viennnaa.utilities.R
+import com.viennnaa.utilities.ui.components.CountStepper
 import com.viennnaa.utilities.ui.components.MiniAppScaffold
 import com.viennnaa.utilities.ui.theme.ResultTextStyle
 import com.viennnaa.utilities.ui.theme.UtilitiesTheme
@@ -135,8 +130,10 @@ fun DiceRollerScreen(onBack: () -> Unit) {
             )
 
             CountStepper(
+                labelRes = R.string.dice_roller_count_heading,
                 count = count,
                 onCountChange = { count = clampDiceCount(it) },
+                range = MIN_DICE..MAX_DICE,
                 enabled = !isRolling,
             )
 
@@ -284,47 +281,6 @@ private fun DiceTypePicker(
                     label = { Text(stringResource(R.string.dice_roller_die, sides)) },
                 )
             }
-        }
-    }
-}
-
-@Composable
-private fun CountStepper(
-    count: Int,
-    onCountChange: (Int) -> Unit,
-    enabled: Boolean,
-    modifier: Modifier = Modifier,
-) {
-    Row(modifier = modifier, verticalAlignment = Alignment.CenterVertically) {
-        Text(
-            text = stringResource(R.string.dice_roller_count_heading),
-            style = MaterialTheme.typography.titleSmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.weight(1f),
-        )
-        IconButton(
-            onClick = { onCountChange(count - 1) },
-            enabled = enabled && count > MIN_DICE,
-        ) {
-            Icon(
-                imageVector = Icons.Filled.KeyboardArrowDown,
-                contentDescription = stringResource(R.string.cd_dice_roller_fewer),
-            )
-        }
-        Text(
-            text = count.toString(),
-            style = MaterialTheme.typography.titleLarge,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.width(44.dp),
-        )
-        IconButton(
-            onClick = { onCountChange(count + 1) },
-            enabled = enabled && count < MAX_DICE,
-        ) {
-            Icon(
-                imageVector = Icons.Filled.KeyboardArrowUp,
-                contentDescription = stringResource(R.string.cd_dice_roller_more),
-            )
         }
     }
 }

@@ -7,32 +7,19 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.InputChip
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -50,14 +37,17 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.viennnaa.utilities.R
+import com.viennnaa.utilities.core.options.addOption
+import com.viennnaa.utilities.core.options.rejectionFor
+import com.viennnaa.utilities.core.options.removeOption
 import com.viennnaa.utilities.ui.components.MiniAppScaffold
+import com.viennnaa.utilities.ui.components.OptionEditor
 import com.viennnaa.utilities.ui.theme.ResultTextStyle
 import com.viennnaa.utilities.ui.theme.UtilitiesTheme
 import kotlinx.coroutines.Job
@@ -88,10 +78,9 @@ fun ListPickerScreen(onBack: () -> Unit) {
     val haptics = LocalHapticFeedback.current
 
     val rejection = rejectionFor(options, draft)
-    val canAdd = rejection == null
 
     fun add() {
-        if (canAdd) {
+        if (rejection == null) {
             options = addOption(options, draft)
             draft = ""
         }
@@ -158,8 +147,8 @@ fun ListPickerScreen(onBack: () -> Unit) {
                 onDraftChange = { draft = it },
                 onAdd = { add() },
                 onRemove = { index -> options = removeOption(options, index) },
-                canAdd = canAdd,
                 rejection = rejection,
+                labelRes = R.string.list_picker_add_hint,
                 enabled = !isPicking,
             )
 
@@ -269,83 +258,6 @@ private fun ResultCard(
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.padding(top = 12.dp),
-            )
-        }
-    }
-}
-
-@OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
-@Composable
-private fun OptionEditor(
-    options: List<String>,
-    draft: String,
-    onDraftChange: (String) -> Unit,
-    onAdd: () -> Unit,
-    onRemove: (Int) -> Unit,
-    canAdd: Boolean,
-    rejection: AddRejection?,
-    enabled: Boolean,
-    modifier: Modifier = Modifier,
-) {
-    Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        if (options.isNotEmpty()) {
-            FlowRow(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                modifier = Modifier
-                    .heightIn(max = 132.dp)
-                    .verticalScroll(rememberScrollState()),
-            ) {
-                options.forEachIndexed { index, option ->
-                    InputChip(
-                        selected = false,
-                        onClick = { onRemove(index) },
-                        enabled = enabled,
-                        label = { Text(option) },
-                        trailingIcon = {
-                            Icon(
-                                imageVector = Icons.Filled.Close,
-                                contentDescription = stringResource(
-                                    R.string.cd_list_picker_remove,
-                                    option,
-                                ),
-                            )
-                        },
-                    )
-                }
-            }
-        }
-
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            OutlinedTextField(
-                value = draft,
-                onValueChange = onDraftChange,
-                label = { Text(stringResource(R.string.list_picker_add_hint)) },
-                singleLine = true,
-                enabled = enabled,
-                isError = rejection != null && rejection != AddRejection.Blank,
-                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
-                keyboardActions = KeyboardActions(onDone = { onAdd() }),
-                modifier = Modifier.weight(1f),
-            )
-            TextButton(onClick = onAdd, enabled = enabled && canAdd) {
-                Text(stringResource(R.string.list_picker_add))
-            }
-        }
-
-        // Blank input is not worth a message: the Add button is simply disabled.
-        val errorRes = when (rejection) {
-            AddRejection.Duplicate -> R.string.list_picker_error_duplicate
-            AddRejection.Full -> R.string.list_picker_error_full
-            AddRejection.Blank, null -> null
-        }
-        if (errorRes != null) {
-            Text(
-                text = stringResource(errorRes, MAX_OPTIONS),
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.error,
             )
         }
     }

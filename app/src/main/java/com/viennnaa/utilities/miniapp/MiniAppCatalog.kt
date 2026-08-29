@@ -5,10 +5,14 @@ import com.viennnaa.utilities.feature.choicemaker.ChoiceMakerScreen
 import com.viennnaa.utilities.feature.diceroller.DiceRollerScreen
 import com.viennnaa.utilities.feature.listpicker.ListPickerScreen
 import com.viennnaa.utilities.feature.randomnumber.RandomNumberScreen
+import com.viennnaa.utilities.feature.teamsplitter.TeamSplitterScreen
+import com.viennnaa.utilities.feature.tipsplitter.TipSplitterScreen
 import com.viennnaa.utilities.ui.theme.AccentChoiceMaker
 import com.viennnaa.utilities.ui.theme.AccentDiceRoller
 import com.viennnaa.utilities.ui.theme.AccentListPicker
 import com.viennnaa.utilities.ui.theme.AccentRandomNumber
+import com.viennnaa.utilities.ui.theme.AccentTeamSplitter
+import com.viennnaa.utilities.ui.theme.AccentTipSplitter
 
 /**
  * Every mini app Utilities ships, in the order they appear on the home screen.
@@ -48,6 +52,22 @@ val MiniAppCatalog: List<MiniApp> = listOf(
         emoji = "🎲",
         accent = AccentDiceRoller,
         screen = { onBack -> DiceRollerScreen(onBack = onBack) },
+    ),
+    MiniApp(
+        id = "team-splitter",
+        titleRes = R.string.team_splitter_title,
+        taglineRes = R.string.team_splitter_tagline,
+        emoji = "👥",
+        accent = AccentTeamSplitter,
+        screen = { onBack -> TeamSplitterScreen(onBack = onBack) },
+    ),
+    MiniApp(
+        id = "tip-splitter",
+        titleRes = R.string.tip_splitter_title,
+        taglineRes = R.string.tip_splitter_tagline,
+        emoji = "💸",
+        accent = AccentTipSplitter,
+        screen = { onBack -> TipSplitterScreen(onBack = onBack) },
     ),
 )
 

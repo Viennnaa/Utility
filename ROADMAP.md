@@ -16,14 +16,14 @@ we start editing the manifest, so those are held until the core set is in.
 
 ## Same family (reuses the `*Logic.kt` + `*Screen.kt` pattern, no new deps)
 
-- [ ] **Shuffler / Team Splitter** — paste names, get a random order or N balanced groups
+- [x] **Shuffler / Team Splitter** — shipped as Team Splitter
 - [ ] **Rock Paper Scissors** — trivial logic, most of the work is the animation
 - [ ] **Password / PIN Generator** — length plus character-class toggles.
       Must use `java.security.SecureRandom`, **not** `kotlin.random.Random`
 
 ## Everyday tools (pure logic, broadens the app past randomness)
 
-- [ ] **Tip & Bill Splitter** — amount, tip %, split N ways
+- [x] **Tip & Bill Splitter** — shipped as Tip Splitter
 - [ ] **Unit Converter** — length, weight, temperature, volume; mostly a conversion table
 - [ ] **Percentage Calculator** — % of, % change, X is what % of Y
 - [ ] **Date Calculator** — days between dates, countdown, age. `java.time`, no deps
@@ -45,8 +45,8 @@ we start editing the manifest, so those are held until the core set is in.
 Both of these get more expensive the longer they wait.
 
 - [ ] **Persistence (DataStore)** — history currently lives in `rememberSaveable`, so it
-      survives rotation but dies with the process. Add one shared per-mini-app storage
-      helper before mini app #5 rather than retrofitting it into six screens
+      survives rotation but dies with the process. **This is now the next thing to do:**
+      there are six mini apps, and the retrofit cost only grows from here
 - [ ] **Home screen structure** — categories or favourites in `MiniAppCatalog`. A flat
       grid is fine up to roughly 8 tiles
 - [ ] **Deep links / launcher shortcuts** — one per mini app; `MiniApp.id` is already the
@@ -70,3 +70,6 @@ Both of these get more expensive the longer they wait.
   navigation route both come from the entry
 - `MiniApp.id` is the navigation route. Never change one after it ships
 - User-facing text goes in `res/values/strings.xml`
+- Reusable pieces live outside `feature/`: list-editing rules in `core/options/`, and the
+  `OptionEditor` / `CountStepper` / `MiniAppScaffold` composables in `ui/components/`.
+  Reach for those before writing a third copy of something

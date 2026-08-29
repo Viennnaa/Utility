@@ -14,6 +14,8 @@ light and dark themes).
 | 🤔 Choice Maker | Answers a yes/no question with a fair coin flip. Keeps recent answers and a running tally. |
 | 🎯 List Picker | Add your own options and let it pick one. Optional remove-after-picking turns it into a draw. |
 | 🎲 Dice Roller | Throws 1–10 dice, d4 through d100. Shows each die and the total, and keeps recent totals. |
+| 👥 Team Splitter | Deals names into evenly sized teams. One team just shuffles the order. |
+| 💸 Tip Splitter | Bill, tip and each person’s share, with the odd cents handed out fairly. |
 
 ## Building
 
@@ -35,14 +37,17 @@ app/src/main/java/com/viennnaa/utilities/
 ├── miniapp/
 │   ├── MiniApp.kt               what a mini app is
 │   └── MiniAppCatalog.kt        the registry — every mini app is listed here
+├── core/options/                list-editing rules shared by the list-building mini apps
 ├── feature/                     one folder per mini app, each a *Logic.kt + *Screen.kt
 │   ├── randomnumber/
 │   ├── choicemaker/
 │   ├── listpicker/
-│   └── diceroller/
+│   ├── diceroller/
+│   ├── teamsplitter/
+│   └── tipsplitter/
 └── ui/
     ├── home/HomeScreen.kt       the grid of mini app tiles
-    ├── components/              shared UI, e.g. MiniAppScaffold
+    ├── components/              MiniAppScaffold, OptionEditor, CountStepper
     └── theme/                   colors, typography, ExtendedColors
 ```
 
