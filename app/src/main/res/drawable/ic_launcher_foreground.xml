@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A 2x2 grid of dots: many small apps in one. Content stays inside the 72dp
+     safe zone (18..90) so no launcher mask can clip it. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M37,26a11,11 0 1,0 0,22a11,11 0 1,0 0,-22z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M71,26a11,11 0 1,0 0,22a11,11 0 1,0 0,-22z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M37,60a11,11 0 1,0 0,22a11,11 0 1,0 0,-22z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M71,60a11,11 0 1,0 0,22a11,11 0 1,0 0,-22z" />
+</vector>

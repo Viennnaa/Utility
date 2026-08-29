@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Utilities</string>
+
+    <!-- Home -->
+    <string name="home_title">Utilities</string>
+    <string name="home_subtitle">Small tools, one app</string>
+    <string name="cd_back">Back</string>
+
+    <!-- Random Number -->
+    <string name="random_number_title">Random Number</string>
+    <string name="random_number_tagline">Roll a number in any range</string>
+    <string name="random_number_range_heading">Pick a range</string>
+    <string name="random_number_preset">%1$d–%2$d</string>
+    <string name="random_number_custom">Custom</string>
+    <string name="random_number_min">From</string>
+    <string name="random_number_max">To</string>
+    <string name="random_number_generate">Generate</string>
+    <string name="random_number_generate_again">Generate again</string>
+    <string name="random_number_empty_result">–</string>
+    <string name="random_number_empty_hint">Tap Generate to roll a number</string>
+    <string name="random_number_active_range">Picking between %1$d and %2$d</string>
+    <string name="random_number_history_heading">Recent rolls</string>
+    <string name="random_number_error_not_a_number">Enter a whole number in both fields.</string>
+    <string name="random_number_error_out_of_bounds">Keep both ends within 1,000,000,000.</string>
+    <string name="random_number_error_min_above_max">The first number must not be larger than the second.</string>
+    <string name="cd_random_number_result">Result: %1$d</string>
+
+    <!-- Choice Maker -->
+    <string name="choice_maker_title">Choice Maker</string>
+    <string name="choice_maker_tagline">Settle it with a yes or no</string>
+    <string name="choice_maker_yes">YES</string>
+    <string name="choice_maker_no">NO</string>
+    <string name="choice_maker_empty_result">?</string>
+    <string name="choice_maker_empty_hint">Ask a question, then tap Decide</string>
+    <string name="choice_maker_decide">Decide</string>
+    <string name="choice_maker_again">Ask again</string>
+    <string name="choice_maker_thinking">Thinking…</string>
+    <string name="choice_maker_tally">%1$d yes · %2$d no</string>
+    <string name="choice_maker_history_heading">Recent answers</string>
+
+    <!-- Shared -->
+    <string name="action_clear">Clear</string>
+</resources>

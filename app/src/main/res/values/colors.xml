@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Matches BackgroundLight in the Compose theme. -->
+    <color name="window_background">#FBF8FF</color>
+    <color name="ic_launcher_background">#4B57C4</color>
+</resources>

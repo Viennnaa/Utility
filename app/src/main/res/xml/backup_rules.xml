@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Backup rules for Android 11 and below. The app keeps no persisted state yet,
+     so the defaults are fine; mini apps that start saving data should add their
+     files here. -->
+<full-backup-content />

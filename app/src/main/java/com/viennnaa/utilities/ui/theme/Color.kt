@@ -1,0 +1,66 @@
+package com.viennnaa.utilities.ui.theme
+
+import androidx.compose.ui.graphics.Color
+
+// Brand palette (light)
+internal val PrimaryLight = Color(0xFF4B57C4)
+internal val OnPrimaryLight = Color(0xFFFFFFFF)
+internal val PrimaryContainerLight = Color(0xFFDFE0FF)
+internal val OnPrimaryContainerLight = Color(0xFF00105C)
+internal val SecondaryLight = Color(0xFF5B5D72)
+internal val OnSecondaryLight = Color(0xFFFFFFFF)
+internal val SecondaryContainerLight = Color(0xFFE0E1F9)
+internal val OnSecondaryContainerLight = Color(0xFF181A2C)
+internal val TertiaryLight = Color(0xFF77536D)
+internal val OnTertiaryLight = Color(0xFFFFFFFF)
+internal val TertiaryContainerLight = Color(0xFFFFD7F1)
+internal val OnTertiaryContainerLight = Color(0xFF2D1228)
+internal val BackgroundLight = Color(0xFFFBF8FF)
+internal val OnBackgroundLight = Color(0xFF1B1B21)
+internal val SurfaceLight = Color(0xFFFBF8FF)
+internal val OnSurfaceLight = Color(0xFF1B1B21)
+internal val SurfaceVariantLight = Color(0xFFE3E1EC)
+internal val OnSurfaceVariantLight = Color(0xFF46464F)
+internal val OutlineLight = Color(0xFF777680)
+internal val ErrorLight = Color(0xFFBA1A1A)
+internal val OnErrorLight = Color(0xFFFFFFFF)
+internal val ErrorContainerLight = Color(0xFFFFDAD6)
+internal val OnErrorContainerLight = Color(0xFF410002)
+
+// Brand palette (dark)
+internal val PrimaryDark = Color(0xFFBCC2FF)
+internal val OnPrimaryDark = Color(0xFF1A2678)
+internal val PrimaryContainerDark = Color(0xFF333E90)
+internal val OnPrimaryContainerDark = Color(0xFFDFE0FF)
+internal val SecondaryDark = Color(0xFFC4C5DD)
+internal val OnSecondaryDark = Color(0xFF2D2F42)
+internal val SecondaryContainerDark = Color(0xFF434559)
+internal val OnSecondaryContainerDark = Color(0xFFE0E1F9)
+internal val TertiaryDark = Color(0xFFE6BAD7)
+internal val OnTertiaryDark = Color(0xFF44263D)
+internal val TertiaryContainerDark = Color(0xFF5D3C55)
+internal val OnTertiaryContainerDark = Color(0xFFFFD7F1)
+internal val BackgroundDark = Color(0xFF121318)
+internal val OnBackgroundDark = Color(0xFFE4E1E9)
+internal val SurfaceDark = Color(0xFF121318)
+internal val OnSurfaceDark = Color(0xFFE4E1E9)
+internal val SurfaceVariantDark = Color(0xFF46464F)
+internal val OnSurfaceVariantDark = Color(0xFFC7C5D0)
+internal val OutlineDark = Color(0xFF918F9A)
+internal val ErrorDark = Color(0xFFFFB4AB)
+internal val OnErrorDark = Color(0xFF690005)
+internal val ErrorContainerDark = Color(0xFF93000A)
+internal val OnErrorContainerDark = Color(0xFFFFDAD6)
+
+/**
+ * Per mini app accents. These stay fixed even when dynamic color is on, so every
+ * mini app keeps the same identity on the home screen across devices.
+ */
+val AccentRandomNumber = Color(0xFF5B6CFF)
+val AccentChoiceMaker = Color(0xFFFF7A45)
+
+// "Yes" / "No" answer colors, tuned per theme so both stay readable.
+internal val YesLight = Color(0xFF1E7A46)
+internal val NoLight = Color(0xFFB3261E)
+internal val YesDark = Color(0xFF6FDCA0)
+internal val NoDark = Color(0xFFFFB4AB)
