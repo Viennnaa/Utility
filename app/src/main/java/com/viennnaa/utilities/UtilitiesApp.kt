@@ -6,7 +6,9 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navDeepLink
 import androidx.navigation.navArgument
+import com.viennnaa.utilities.core.shortcuts.DEEP_LINK_PREFIX
 import com.viennnaa.utilities.miniapp.MiniApp
 import com.viennnaa.utilities.miniapp.MiniAppCatalog
 import com.viennnaa.utilities.miniapp.findMiniApp
@@ -39,6 +41,11 @@ fun UtilitiesApp(miniApps: List<MiniApp> = MiniAppCatalog) {
         composable(
             route = Routes.MINI_APP,
             arguments = listOf(navArgument(MINI_APP_ID_ARG) { type = NavType.StringType }),
+            // Launcher shortcuts open mini apps through this, so a shortcut and
+            // a tap land on the same destination.
+            deepLinks = listOf(
+                navDeepLink { uriPattern = "$DEEP_LINK_PREFIX{$MINI_APP_ID_ARG}" },
+            ),
         ) { backStackEntry ->
             val miniApp = findMiniApp(
                 id = backStackEntry.arguments?.getString(MINI_APP_ID_ARG),
