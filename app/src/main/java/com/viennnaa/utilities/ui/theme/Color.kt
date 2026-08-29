@@ -68,6 +68,10 @@ val AccentUnitConverter = Color(0xFF0284C7)
 val AccentPercentage = Color(0xFF7C3AED)
 val AccentDateCalc = Color(0xFF059669)
 val AccentTextTools = Color(0xFF64748B)
+val AccentFlashlight = Color(0xFFFFC107)
+val AccentLevel = Color(0xFF14B8A6)
+val AccentCompass = Color(0xFFDC2626)
+val AccentRuler = Color(0xFF8B5CF6)
 
 // "Yes" / "No" answer colors, tuned per theme so both stay readable.
 internal val YesLight = Color(0xFF1E7A46)

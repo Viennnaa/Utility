@@ -20,4 +20,8 @@ object MiniAppIds {
     const val PERCENTAGE = "percentage"
     const val DATE_CALC = "date-calculator"
     const val TEXT_TOOLS = "text-tools"
+    const val FLASHLIGHT = "flashlight"
+    const val LEVEL = "bubble-level"
+    const val COMPASS = "compass"
+    const val RULER = "ruler"
 }

@@ -3,24 +3,32 @@ package com.viennnaa.utilities.miniapp
 import com.viennnaa.utilities.R
 import com.viennnaa.utilities.feature.choicemaker.ChoiceMakerScreen
 import com.viennnaa.utilities.feature.diceroller.DiceRollerScreen
+import com.viennnaa.utilities.feature.compass.CompassScreen
 import com.viennnaa.utilities.feature.datecalc.DateCalcScreen
+import com.viennnaa.utilities.feature.flashlight.FlashlightScreen
+import com.viennnaa.utilities.feature.level.LevelScreen
 import com.viennnaa.utilities.feature.listpicker.ListPickerScreen
 import com.viennnaa.utilities.feature.passwordgen.PasswordGenScreen
 import com.viennnaa.utilities.feature.percentage.PercentageScreen
 import com.viennnaa.utilities.feature.randomnumber.RandomNumberScreen
 import com.viennnaa.utilities.feature.rps.RpsScreen
+import com.viennnaa.utilities.feature.ruler.RulerScreen
 import com.viennnaa.utilities.feature.teamsplitter.TeamSplitterScreen
 import com.viennnaa.utilities.feature.texttools.TextToolsScreen
 import com.viennnaa.utilities.feature.tipsplitter.TipSplitterScreen
 import com.viennnaa.utilities.feature.unitconverter.UnitConverterScreen
 import com.viennnaa.utilities.ui.theme.AccentChoiceMaker
+import com.viennnaa.utilities.ui.theme.AccentCompass
 import com.viennnaa.utilities.ui.theme.AccentDateCalc
 import com.viennnaa.utilities.ui.theme.AccentDiceRoller
+import com.viennnaa.utilities.ui.theme.AccentFlashlight
+import com.viennnaa.utilities.ui.theme.AccentLevel
 import com.viennnaa.utilities.ui.theme.AccentListPicker
 import com.viennnaa.utilities.ui.theme.AccentPasswordGen
 import com.viennnaa.utilities.ui.theme.AccentPercentage
 import com.viennnaa.utilities.ui.theme.AccentRandomNumber
 import com.viennnaa.utilities.ui.theme.AccentRps
+import com.viennnaa.utilities.ui.theme.AccentRuler
 import com.viennnaa.utilities.ui.theme.AccentTeamSplitter
 import com.viennnaa.utilities.ui.theme.AccentTextTools
 import com.viennnaa.utilities.ui.theme.AccentTipSplitter
@@ -140,6 +148,42 @@ val MiniAppCatalog: List<MiniApp> = listOf(
         emoji = "✍️",
         accent = AccentTextTools,
         screen = { onBack -> TextToolsScreen(onBack = onBack) },
+    ),
+    MiniApp(
+        id = MiniAppIds.FLASHLIGHT,
+        titleRes = R.string.flashlight_title,
+        taglineRes = R.string.flashlight_tagline,
+        category = MiniAppCategory.DEVICE,
+        emoji = "🔦",
+        accent = AccentFlashlight,
+        screen = { onBack -> FlashlightScreen(onBack = onBack) },
+    ),
+    MiniApp(
+        id = MiniAppIds.LEVEL,
+        titleRes = R.string.level_title,
+        taglineRes = R.string.level_tagline,
+        category = MiniAppCategory.DEVICE,
+        emoji = "🪧",
+        accent = AccentLevel,
+        screen = { onBack -> LevelScreen(onBack = onBack) },
+    ),
+    MiniApp(
+        id = MiniAppIds.COMPASS,
+        titleRes = R.string.compass_title,
+        taglineRes = R.string.compass_tagline,
+        category = MiniAppCategory.DEVICE,
+        emoji = "🧭",
+        accent = AccentCompass,
+        screen = { onBack -> CompassScreen(onBack = onBack) },
+    ),
+    MiniApp(
+        id = MiniAppIds.RULER,
+        titleRes = R.string.ruler_title,
+        taglineRes = R.string.ruler_tagline,
+        category = MiniAppCategory.DEVICE,
+        emoji = "📐",
+        accent = AccentRuler,
+        screen = { onBack -> RulerScreen(onBack = onBack) },
     ),
 )
 

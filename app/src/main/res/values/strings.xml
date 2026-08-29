@@ -208,6 +208,43 @@
     <string name="text_tools_stat_words">words</string>
     <string name="text_tools_stat_lines">lines</string>
 
+    <!-- Flashlight -->
+    <string name="flashlight_title">Flashlight</string>
+    <string name="flashlight_tagline">Torch on, torch off</string>
+    <string name="flashlight_on">On \u00b7 tap to turn off</string>
+    <string name="flashlight_off">Off \u00b7 tap to turn on</string>
+    <string name="flashlight_unavailable">This device has no camera flash.</string>
+    <string name="flashlight_failed">The torch is in use by another app.</string>
+
+    <!-- Level -->
+    <string name="level_title">Bubble Level</string>
+    <string name="level_tagline">Check a surface is flat</string>
+    <string name="level_roll">roll</string>
+    <string name="level_pitch">pitch</string>
+    <string name="level_waiting">Waiting for the sensor\u2026</string>
+    <string name="level_is_level">Level</string>
+    <string name="level_off_by">Off by %1$s\u00b0</string>
+    <string name="level_unavailable">This device has no accelerometer.</string>
+
+    <!-- Compass -->
+    <string name="compass_title">Compass</string>
+    <string name="compass_tagline">Which way is north</string>
+    <string name="compass_waiting">Waiting for the sensor\u2026</string>
+    <string name="compass_note">Points to magnetic north. Metal and magnets nearby will pull it off.</string>
+    <string name="compass_unavailable">This device has no magnetometer.</string>
+
+    <!-- Ruler -->
+    <string name="ruler_title">Ruler</string>
+    <string name="ruler_tagline">Measure small things on screen</string>
+    <string name="ruler_mm">Millimetres</string>
+    <string name="ruler_inches">Inches</string>
+    <string name="ruler_calibration">Scale: %1$d%%</string>
+    <string name="ruler_shorter">Shorter</string>
+    <string name="ruler_longer">Longer</string>
+    <string name="ruler_reset">Reset</string>
+    <string name="ruler_hint">Lay a card or coin against the scale and nudge until it matches.</string>
+    <string name="ruler_unavailable">This device does not report a usable screen density.</string>
+
     <!-- Shared -->
     <string name="options_add">Add</string>
     <string name="options_error_duplicate">That is already in the list.</string>
