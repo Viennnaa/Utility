@@ -1,10 +1,11 @@
 # Utilities
 
 An Android super app: one launcher icon, twenty-two small tools. The home screen
-groups mini apps by category with a search box; tapping one opens it full screen.
+groups mini apps by category with a search box; tapping one opens it full screen,
+and pressing and holding pins it to a Favourites section at the top.
 
-Built with Kotlin, Jetpack Compose and Material 3 (dynamic color on Android 12+,
-light and dark themes).
+Built with Kotlin, Jetpack Compose and Material 3. The theme is a setting —
+System, Light or Dark — with optional wallpaper colours on Android 12+.
 
 ## Mini apps
 
@@ -50,6 +51,18 @@ light and dark themes).
 | 📐 Ruler | An on-screen scale, with calibration for the device. |
 | ⏱️ Stopwatch | Stopwatch with laps, and a countdown timer with a notification. |
 
+## Settings
+
+Reached from the icon in the home top bar.
+
+- **Theme** — System, Light or Dark. An explicit choice overrides the device.
+- **Colours from your wallpaper** — Material You, on Android 12+. Mini app accents
+  stay fixed either way, so tiles keep their identity whatever the palette does.
+- **Favourites** — up to eight pinned mini apps, cleared from here.
+
+Settings are read as a stream rather than once, so a theme change applies
+immediately rather than on the next launch.
+
 ## Building
 
 ```bash
@@ -85,15 +98,17 @@ app/src/main/java/com/viennnaa/utilities/
 │   ├── MiniAppCategory.kt       home screen grouping
 │   └── MiniAppCatalog.kt        the registry — every mini app is listed here
 ├── core/
+│   ├── settings/                theme mode and favourites rules, free of Android types
 │   ├── options/                 list-editing rules shared by the list-building mini apps
 │   ├── money/                   cent-exact amounts and basis-point rates
 │   ├── qr/                      QR encoding, shared by the mini apps that produce codes
-│   ├── storage/                 DataStore-backed per mini app settings, and list encoding
+│   ├── storage/                 one DataStore: per mini app settings, app settings, list encoding
 │   ├── sensors/                 lifecycle-aware sensor subscription
 │   └── shortcuts/               launcher shortcuts built from the catalog
 ├── feature/                     one folder per mini app, each a *Logic.kt + *Screen.kt
 └── ui/
-    ├── home/HomeScreen.kt       the category grid and search
+    ├── home/HomeScreen.kt       favourites, the category grid and search
+    ├── settings/                theme, wallpaper colours and about
     ├── components/              MiniAppScaffold, OptionEditor, CountStepper
     └── theme/                   colors, typography, ExtendedColors
 ```

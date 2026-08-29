@@ -26,8 +26,12 @@ the home screen. See `README.md` for what each one does.
       shortcut icons drawn from each mini app's emoji and accent
 - [x] **CI** — build, unit tests and lint on every push, then instrumented tests
       on an emulator
-- [x] **Instrumented tests** — home grid, search behaviour, and opening and
-      closing mini apps
+- [x] **Instrumented tests** — home grid, search behaviour, favourites, settings,
+      and opening and closing mini apps
+- [x] **Settings and theme choice** — System/Light/Dark and wallpaper colours,
+      read as a stream so a change applies at once
+- [x] **Favourites** — press and hold to pin, up to eight, sanitised against the
+      catalog before drawing
 
 ## Not taken
 
@@ -66,8 +70,8 @@ actually decides the order.
 
 ## Worth doing next
 
-- [ ] **Reorderable home screen or favourites.** Nineteen tiles is where a fixed
-      order starts to chafe; the catalog is already the single source for ordering
+- [ ] **Drag to reorder favourites.** Pinning exists; the order within Favourites
+      is still the order things were pinned in
 - [ ] **Share actions.** QR Generator and WiFi QR have no way to export their
       codes, and Text Tools and Password Generator only copy to the clipboard.
       This is a gap in shipped features rather than a missing one
@@ -75,6 +79,13 @@ actually decides the order.
       navigation; individual mini app interactions are still only unit tested
 - [ ] **Translations.** All user-facing text is already in `strings.xml`, so this
       is adding locale folders rather than reworking anything
+
+### Known trade
+
+The first frame after a cold start may use the default theme before the stored
+one arrives: DataStore is read off the main thread, and blocking startup to
+avoid a brief flash is the worse trade. If it turns out to be visible in
+practice, the fix is a small synchronous mirror of just the theme key.
 
 ## Conventions
 
@@ -97,3 +108,7 @@ actually decides the order.
   comma-decimal locale leaves a stray separator, so the formatters have tests
   that set one — the default-locale tests pass on a dot machine either way
 - Money is whole cents and basis points in `core/money`, never a Double
+- App-wide settings live in `core/settings` (rules, no Android types) and
+  `core/storage/AppPreferences` (storage). There is exactly one DataStore
+  delegate, in `UtilitiesDataStore.kt` — declaring a second over the same file
+  throws at runtime
