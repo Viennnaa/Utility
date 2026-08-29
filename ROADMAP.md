@@ -1,76 +1,72 @@
 # Roadmap
 
-Planned mini apps and the plumbing they need. Grouped by how much new machinery
-each one requires, not by priority.
-
-Ordering principle: everything in "Same family" and "Everyday tools" needs no new
-permissions and no third-party libraries. The moment we take on the hardware group
-we start editing the manifest, so those are held until the core set is in.
+Everything originally on this list has shipped. What follows is the record of
+what was built, and the ideas that came up along the way but were not taken.
 
 ## Shipped
 
-- [x] **Random Number** — preset and custom ranges, roll animation, recent rolls
-- [x] **Choice Maker** — fair yes/no coin flip, tally, recent answers
-- [x] **List Picker** — add options, pick one at random, optional remove-after-pick
-- [x] **Dice Roller** — 1–10 dice, d4 through d100, per-die values and total
+All nineteen mini apps are in `MiniAppCatalog`, grouped into four categories on
+the home screen. See `README.md` for what each one does.
 
-## Same family (reuses the `*Logic.kt` + `*Screen.kt` pattern, no new deps)
+- [x] **Decide** — Random Number, Choice Maker, List Picker, Dice Roller,
+      Team Splitter, Rock Paper Scissors
+- [x] **Calculate** — Tip Splitter, Unit Converter, Percentage, Date Calculator
+- [x] **Text and codes** — Password Generator, Text Tools, QR Generator, QR Scanner
+- [x] **Device** — Flashlight, Bubble Level, Compass, Ruler, Stopwatch and Timer
 
-- [x] **Shuffler / Team Splitter** — shipped as Team Splitter
-- [ ] **Rock Paper Scissors** — trivial logic, most of the work is the animation
-- [ ] **Password / PIN Generator** — length plus character-class toggles.
-      Must use `java.security.SecureRandom`, **not** `kotlin.random.Random`
+### Plumbing
 
-## Everyday tools (pure logic, broadens the app past randomness)
+- [x] **Persistence** — one namespaced DataStore per mini app. Settings the user
+      built up are kept; results and history stay transient on purpose
+- [x] **Home screen structure** — categories in enum declaration order, plus search
+      over titles and taglines
+- [x] **Deep links and launcher shortcuts** — `utilities://miniapp/<id>`, with
+      shortcut icons drawn from each mini app's emoji and accent
+- [x] **CI** — build, unit tests and lint on every push, then instrumented tests
+      on an emulator
+- [x] **Instrumented tests** — home grid, search behaviour, and opening and
+      closing mini apps
 
-- [x] **Tip & Bill Splitter** — shipped as Tip Splitter
-- [ ] **Unit Converter** — length, weight, temperature, volume; mostly a conversion table
-- [ ] **Percentage Calculator** — % of, % change, X is what % of Y
-- [ ] **Date Calculator** — days between dates, countdown, age. `java.time`, no deps
-- [ ] **Text Tools** — case conversion, word and character count, reverse, strip line breaks
-- [ ] **Stopwatch & Timer** — logic is easy, but surviving backgrounding needs a
-      foreground service and notification permission. Budget more than it looks like
+## Not taken
 
-## Hardware-backed (needs manifest changes — hold until the core set is in)
+Ideas that came up and were deliberately left out, with the reason.
 
-- [ ] **Flashlight** — `CameraManager.setTorchMode()`, no permission required
-- [ ] **Bubble Level** — accelerometer, no permission
-- [ ] **Compass** — magnetometer, no permission
-- [ ] **Ruler** — screen density based; needs per-device calibration to be honest
-- [ ] **QR Generator** — needs a library such as ZXing
-- [ ] **QR Scanner** — needs CameraX and the camera permission
+- **Currency converter.** Needs a live rate feed, so it would be the first mini
+  app that stops working offline and the first to need a network permission and
+  an API key. Everything else here works on a plane.
+- **Notes and to-do.** Real user data, which means backup, export and a migration
+  story for the storage format. That is a bigger commitment than a mini app.
+- **AlarmManager-backed timer.** The current timer is correct across backgrounding
+  because it derives from a timestamp, and the foreground service notification
+  covers the alert. Exact alarms would additionally survive the process being
+  killed, at the cost of `SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`.
 
-## Plumbing
+## Worth doing next
 
-Both of these get more expensive the longer they wait.
-
-- [x] **Persistence (DataStore)** — each mini app keeps the settings the user built up
-      (option lists, rosters, preferred dice, usual tip) in one namespaced DataStore.
-      Results and history stay deliberately transient
-- [ ] **Home screen structure** — categories or favourites in `MiniAppCatalog`. A flat
-      grid is fine up to roughly 8 tiles
-- [ ] **Deep links / launcher shortcuts** — one per mini app; `MiniApp.id` is already the
-      route, so the ids are the stable part
-- [ ] **Search across mini apps** — worth it once the catalog outgrows one screen
-
-## Open items
-
-- [x] **Verify the Compose UI compiles.** Done, and no longer a manual step: CI builds
-      and tests every push (`.github/workflows/android.yml`), since GitHub's runners have
-      the Android SDK that the authoring environment does not
-- [ ] **Instrumented tests** — the dependencies are declared, nothing is written yet
+- [ ] **Reorderable home screen or favourites.** Nineteen tiles is where a fixed
+      order starts to chafe; the catalog is already the single source for ordering
+- [ ] **Share actions.** QR Generator has no way to export its code, and Text
+      Tools and Password Generator only copy to the clipboard
+- [ ] **Widen instrumented coverage.** The current tests cover the home screen and
+      navigation; individual mini app interactions are still only unit tested
+- [ ] **Translations.** All user-facing text is already in `strings.xml`, so this
+      is adding locale folders rather than reworking anything
 
 ## Conventions
 
-- Each mini app is a folder under `feature/`, holding a `*Logic.kt` with no Android or
-  Compose imports plus a `*Screen.kt` taking `onBack: () -> Unit`
-- Randomness and validation live in `*Logic.kt` so they are covered by plain JVM tests
-- Register in `MiniAppCatalog` — that is the only wiring; the home tile and the
-  navigation route both come from the entry
-- `MiniApp.id` is the navigation route. Never change one after it ships
+- Each mini app is a folder under `feature/`, holding a `*Logic.kt` with no Android
+  or Compose imports plus a `*Screen.kt` taking `onBack: () -> Unit`
+- Rules, arithmetic and randomness live in `*Logic.kt` so they are covered by plain
+  JVM tests
+- Register in `MiniAppCatalog` — the home tile, the route, the deep link and the
+  shortcut all come from that one entry
+- `MiniApp.id` is both the navigation route and the settings namespace. Never
+  change one after it ships
 - User-facing text goes in `res/values/strings.xml`
-- Settings a user built up belong in `MiniAppPreferences`, keyed by `MiniAppIds`. Results
-  and history stay in `rememberSaveable` — they are meant to be transient
-- Reusable pieces live outside `feature/`: list-editing rules in `core/options/`, and the
-  `OptionEditor` / `CountStepper` / `MiniAppScaffold` composables in `ui/components/`.
-  Reach for those before writing a third copy of something
+- Settings a user built up belong in `MiniAppPreferences`, keyed by `MiniAppIds`.
+  Results and history stay in `rememberSaveable` — they are meant to be transient
+- Reusable pieces live outside `feature/`: `core/options`, `core/storage`,
+  `core/sensors`, `core/shortcuts`, and the `ui/components` composables. Reach for
+  those before writing a third copy of something
+- Number formatting that gets trimmed is pinned to `Locale.US`; parsing accepts
+  either decimal separator
