@@ -58,6 +58,8 @@ internal val OnErrorContainerDark = Color(0xFFFFDAD6)
  */
 val AccentRandomNumber = Color(0xFF5B6CFF)
 val AccentChoiceMaker = Color(0xFFFF7A45)
+val AccentListPicker = Color(0xFF0EA5A5)
+val AccentDiceRoller = Color(0xFFA855F7)
 
 // "Yes" / "No" answer colors, tuned per theme so both stay readable.
 internal val YesLight = Color(0xFF1E7A46)

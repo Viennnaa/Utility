@@ -2,8 +2,12 @@ package com.viennnaa.utilities.miniapp
 
 import com.viennnaa.utilities.R
 import com.viennnaa.utilities.feature.choicemaker.ChoiceMakerScreen
+import com.viennnaa.utilities.feature.diceroller.DiceRollerScreen
+import com.viennnaa.utilities.feature.listpicker.ListPickerScreen
 import com.viennnaa.utilities.feature.randomnumber.RandomNumberScreen
 import com.viennnaa.utilities.ui.theme.AccentChoiceMaker
+import com.viennnaa.utilities.ui.theme.AccentDiceRoller
+import com.viennnaa.utilities.ui.theme.AccentListPicker
 import com.viennnaa.utilities.ui.theme.AccentRandomNumber
 
 /**
@@ -17,7 +21,7 @@ val MiniAppCatalog: List<MiniApp> = listOf(
         id = "random-number",
         titleRes = R.string.random_number_title,
         taglineRes = R.string.random_number_tagline,
-        emoji = "🎲",
+        emoji = "🔢",
         accent = AccentRandomNumber,
         screen = { onBack -> RandomNumberScreen(onBack = onBack) },
     ),
@@ -28,6 +32,22 @@ val MiniAppCatalog: List<MiniApp> = listOf(
         emoji = "🤔",
         accent = AccentChoiceMaker,
         screen = { onBack -> ChoiceMakerScreen(onBack = onBack) },
+    ),
+    MiniApp(
+        id = "list-picker",
+        titleRes = R.string.list_picker_title,
+        taglineRes = R.string.list_picker_tagline,
+        emoji = "🎯",
+        accent = AccentListPicker,
+        screen = { onBack -> ListPickerScreen(onBack = onBack) },
+    ),
+    MiniApp(
+        id = "dice-roller",
+        titleRes = R.string.dice_roller_title,
+        taglineRes = R.string.dice_roller_tagline,
+        emoji = "🎲",
+        accent = AccentDiceRoller,
+        screen = { onBack -> DiceRollerScreen(onBack = onBack) },
     ),
 )
 

@@ -39,6 +39,39 @@
     <string name="choice_maker_tally">%1$d yes · %2$d no</string>
     <string name="choice_maker_history_heading">Recent answers</string>
 
+    <!-- List Picker -->
+    <string name="list_picker_title">List Picker</string>
+    <string name="list_picker_tagline">Let it choose from your options</string>
+    <string name="list_picker_add_hint">Add an option</string>
+    <string name="list_picker_add">Add</string>
+    <string name="list_picker_pick">Pick one</string>
+    <string name="list_picker_pick_again">Pick again</string>
+    <string name="list_picker_empty_result">\u2013</string>
+    <string name="list_picker_empty_hint">Add at least two options</string>
+    <string name="list_picker_ready">Picking from %1$d options</string>
+    <string name="list_picker_thinking">Choosing\u2026</string>
+    <string name="list_picker_remove_after_pick">Remove after picking</string>
+    <string name="list_picker_history_heading">Recent picks</string>
+    <string name="list_picker_error_duplicate">That option is already in the list.</string>
+    <string name="list_picker_error_full">You can add up to %1$d options.</string>
+    <string name="cd_list_picker_remove">Remove %1$s</string>
+
+    <!-- Dice Roller -->
+    <string name="dice_roller_title">Dice Roller</string>
+    <string name="dice_roller_tagline">Roll any dice, any number</string>
+    <string name="dice_roller_type_heading">Dice</string>
+    <string name="dice_roller_die">d%1$d</string>
+    <string name="dice_roller_count_heading">How many</string>
+    <string name="dice_roller_roll">Roll</string>
+    <string name="dice_roller_roll_again">Roll again</string>
+    <string name="dice_roller_empty_result">\u2013</string>
+    <string name="dice_roller_empty_hint">Tap Roll to throw the dice</string>
+    <string name="dice_roller_spec">%1$d \u00d7 d%2$d</string>
+    <string name="dice_roller_history_heading">Recent totals</string>
+    <string name="cd_dice_roller_fewer">Fewer dice</string>
+    <string name="cd_dice_roller_more">More dice</string>
+    <string name="cd_dice_roller_total">Total %1$d</string>
+
     <!-- Shared -->
     <string name="action_clear">Clear</string>
 </resources>
