@@ -37,6 +37,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.viennnaa.utilities.R
+import com.viennnaa.utilities.core.qr.Correction
+import com.viennnaa.utilities.core.qr.MAX_CONTENT_LENGTH
+import com.viennnaa.utilities.core.qr.encodeQr
+import com.viennnaa.utilities.core.qr.matrixToPixels
 import com.viennnaa.utilities.ui.components.MiniAppScaffold
 import com.viennnaa.utilities.ui.theme.UtilitiesTheme
 

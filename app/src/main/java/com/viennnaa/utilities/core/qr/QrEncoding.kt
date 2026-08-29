@@ -1,4 +1,4 @@
-package com.viennnaa.utilities.feature.qrgen
+package com.viennnaa.utilities.core.qr
 
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.EncodeHintType
@@ -8,8 +8,11 @@ import com.google.zxing.qrcode.QRCodeWriter
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel
 
 /**
- * QR encoding. ZXing is a plain JVM library, so all of this is testable without
- * a device — including encoding a code and reading it back.
+ * QR encoding, shared by the mini apps that produce codes: the QR generator and
+ * the WiFi one.
+ *
+ * ZXing is a plain JVM library, so all of this is testable without a device —
+ * including encoding a code and reading it straight back.
  */
 
 /**

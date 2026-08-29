@@ -1,6 +1,6 @@
 package com.viennnaa.utilities.feature.qrscan
 
-import com.viennnaa.utilities.feature.qrgen.encodeQr
+import com.viennnaa.utilities.core.qr.encodeQr
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test

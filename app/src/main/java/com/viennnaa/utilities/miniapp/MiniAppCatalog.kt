@@ -5,6 +5,7 @@ import com.viennnaa.utilities.feature.choicemaker.ChoiceMakerScreen
 import com.viennnaa.utilities.feature.diceroller.DiceRollerScreen
 import com.viennnaa.utilities.feature.compass.CompassScreen
 import com.viennnaa.utilities.feature.datecalc.DateCalcScreen
+import com.viennnaa.utilities.feature.discount.DiscountScreen
 import com.viennnaa.utilities.feature.flashlight.FlashlightScreen
 import com.viennnaa.utilities.feature.level.LevelScreen
 import com.viennnaa.utilities.feature.listpicker.ListPickerScreen
@@ -18,11 +19,14 @@ import com.viennnaa.utilities.feature.stopwatch.StopwatchScreen
 import com.viennnaa.utilities.feature.ruler.RulerScreen
 import com.viennnaa.utilities.feature.teamsplitter.TeamSplitterScreen
 import com.viennnaa.utilities.feature.texttools.TextToolsScreen
+import com.viennnaa.utilities.feature.timezone.TimeZoneScreen
 import com.viennnaa.utilities.feature.tipsplitter.TipSplitterScreen
 import com.viennnaa.utilities.feature.unitconverter.UnitConverterScreen
+import com.viennnaa.utilities.feature.wifiqr.WifiQrScreen
 import com.viennnaa.utilities.ui.theme.AccentChoiceMaker
 import com.viennnaa.utilities.ui.theme.AccentCompass
 import com.viennnaa.utilities.ui.theme.AccentDateCalc
+import com.viennnaa.utilities.ui.theme.AccentDiscount
 import com.viennnaa.utilities.ui.theme.AccentDiceRoller
 import com.viennnaa.utilities.ui.theme.AccentFlashlight
 import com.viennnaa.utilities.ui.theme.AccentLevel
@@ -37,8 +41,10 @@ import com.viennnaa.utilities.ui.theme.AccentRuler
 import com.viennnaa.utilities.ui.theme.AccentStopwatch
 import com.viennnaa.utilities.ui.theme.AccentTeamSplitter
 import com.viennnaa.utilities.ui.theme.AccentTextTools
+import com.viennnaa.utilities.ui.theme.AccentTimeZones
 import com.viennnaa.utilities.ui.theme.AccentTipSplitter
 import com.viennnaa.utilities.ui.theme.AccentUnitConverter
+import com.viennnaa.utilities.ui.theme.AccentWifiQr
 
 /**
  * Every mini app Utilities ships, in the order they appear on the home screen.
@@ -138,6 +144,24 @@ val MiniAppCatalog: List<MiniApp> = listOf(
         screen = { onBack -> DateCalcScreen(onBack = onBack) },
     ),
     MiniApp(
+        id = MiniAppIds.DISCOUNT,
+        titleRes = R.string.discount_title,
+        taglineRes = R.string.discount_tagline,
+        category = MiniAppCategory.CALCULATE,
+        emoji = "🏷️",
+        accent = AccentDiscount,
+        screen = { onBack -> DiscountScreen(onBack = onBack) },
+    ),
+    MiniApp(
+        id = MiniAppIds.TIME_ZONES,
+        titleRes = R.string.time_zones_title,
+        taglineRes = R.string.time_zones_tagline,
+        category = MiniAppCategory.CALCULATE,
+        emoji = "🌍",
+        accent = AccentTimeZones,
+        screen = { onBack -> TimeZoneScreen(onBack = onBack) },
+    ),
+    MiniApp(
         id = MiniAppIds.PASSWORD_GEN,
         titleRes = R.string.password_gen_title,
         taglineRes = R.string.password_gen_tagline,
@@ -172,6 +196,15 @@ val MiniAppCatalog: List<MiniApp> = listOf(
         emoji = "📷",
         accent = AccentQrScan,
         screen = { onBack -> QrScanScreen(onBack = onBack) },
+    ),
+    MiniApp(
+        id = MiniAppIds.WIFI_QR,
+        titleRes = R.string.wifi_qr_title,
+        taglineRes = R.string.wifi_qr_tagline,
+        category = MiniAppCategory.TEXT_AND_CODES,
+        emoji = "📶",
+        accent = AccentWifiQr,
+        screen = { onBack -> WifiQrScreen(onBack = onBack) },
     ),
     MiniApp(
         id = MiniAppIds.FLASHLIGHT,

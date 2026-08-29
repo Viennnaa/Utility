@@ -3,6 +3,7 @@ package com.viennnaa.utilities.feature.percentage
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test
+import java.util.Locale
 
 class PercentageLogicTest {
 
@@ -59,5 +60,21 @@ class PercentageLogicTest {
         assertEquals("2.5", formatNumber(2.5))
         assertEquals("0", formatNumber(0.0))
         assertEquals("-12.75", formatNumber(-12.75))
+    }
+
+    @Test
+    fun `formatNumber is unaffected by a comma-decimal default locale`() {
+        // The trimming strips a trailing '.', so a locale that formats with ','
+        // would leave "25," behind. This test fails without the explicit locale,
+        // and passes by luck on an en-US machine, which is why it sets one.
+        val original = Locale.getDefault()
+        try {
+            Locale.setDefault(Locale.GERMANY)
+            assertEquals("25", formatNumber(25.0))
+            assertEquals("2.5", formatNumber(2.5))
+            assertEquals("-12.75", formatNumber(-12.75))
+        } finally {
+            Locale.setDefault(original)
+        }
     }
 }

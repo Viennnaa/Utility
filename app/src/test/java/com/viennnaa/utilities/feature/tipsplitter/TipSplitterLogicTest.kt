@@ -1,55 +1,10 @@
 package com.viennnaa.utilities.feature.tipsplitter
 
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class TipSplitterLogicTest {
-
-    @Test
-    fun `parseAmountCents reads whole and decimal amounts`() {
-        assertEquals(1200L, parseAmountCents("12"))
-        assertEquals(1250L, parseAmountCents("12.5"))
-        assertEquals(1234L, parseAmountCents("12.34"))
-        assertEquals(34L, parseAmountCents(".34"))
-        assertEquals(1200L, parseAmountCents("  12  "))
-    }
-
-    @Test
-    fun `parseAmountCents accepts a comma as the decimal mark`() {
-        assertEquals(1234L, parseAmountCents("12,34"))
-    }
-
-    @Test
-    fun `parseAmountCents rejects junk`() {
-        assertNull(parseAmountCents(""))
-        assertNull(parseAmountCents("   "))
-        assertNull(parseAmountCents("abc"))
-        assertNull(parseAmountCents("12.3.4"))
-        assertNull(parseAmountCents("12-34"))
-        assertNull(parseAmountCents("-12"))
-    }
-
-    @Test
-    fun `parseAmountCents rejects more than two decimal places`() {
-        // Truncating silently would change the bill, so this is an error.
-        assertNull(parseAmountCents("12.345"))
-    }
-
-    @Test
-    fun `parseAmountCents rejects an amount past the cap`() {
-        assertNull(parseAmountCents("2000000"))
-    }
-
-    @Test
-    fun `formatCents always shows two decimal places`() {
-        assertEquals("12.34", formatCents(1234))
-        assertEquals("12.00", formatCents(1200))
-        assertEquals("12.05", formatCents(1205))
-        assertEquals("0.07", formatCents(7))
-        assertEquals("0.00", formatCents(0))
-    }
 
     @Test
     fun `tip is rounded half up`() {

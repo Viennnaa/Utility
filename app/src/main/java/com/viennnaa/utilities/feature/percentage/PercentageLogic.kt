@@ -32,8 +32,14 @@ fun parseNumber(text: String): Double? {
     return trimmed.toDoubleOrNull()?.takeIf { it.isFinite() }
 }
 
-/** Trims trailing zeros so 25.000000 reads as 25. */
+/**
+ * Trims trailing zeros so 25.0000 reads as 25.
+ *
+ * Pinned to [Locale.US]: the trimming strips a trailing '.', so a locale that
+ * formats with ',' would leave "25," on screen. [parseNumber] takes either mark,
+ * so input stays forgiving regardless.
+ */
 fun formatNumber(value: Double): String {
-    if (!value.isFinite()) return "—"
-    return String.format("%.4f", value).trimEnd('0').trimEnd('.').ifEmpty { "0" }
+    if (!value.isFinite()) return "\u2014"
+    return String.format(Locale.US, "%.4f", value).trimEnd('0').trimEnd('.').ifEmpty { "0" }
 }

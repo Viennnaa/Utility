@@ -27,4 +27,7 @@ object MiniAppIds {
     const val STOPWATCH = "stopwatch"
     const val QR_GEN = "qr-generator"
     const val QR_SCAN = "qr-scanner"
+    const val DISCOUNT = "discount"
+    const val TIME_ZONES = "time-zones"
+    const val WIFI_QR = "wifi-qr"
 }

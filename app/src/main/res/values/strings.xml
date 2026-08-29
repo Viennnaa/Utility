@@ -290,6 +290,62 @@
     <string name="qr_scan_open_email">Send email</string>
     <string name="qr_scan_open_phone">Call number</string>
 
+    <!-- Discount and VAT -->
+    <string name="discount_title">Discount and VAT</string>
+    <string name="discount_tagline">Take it off, put it on, strip it out</string>
+    <string name="discount_mode_discount">Discount</string>
+    <string name="discount_mode_add_tax">Add tax</string>
+    <string name="discount_mode_remove_tax">Remove tax</string>
+    <string name="discount_amount_price">Original price</string>
+    <string name="discount_amount_net">Price before tax</string>
+    <string name="discount_amount_gross">Price including tax</string>
+    <string name="discount_amount_error">Enter an amount like 24.50</string>
+    <string name="discount_rate_off">Percent off</string>
+    <string name="discount_rate_tax">Tax rate</string>
+    <string name="discount_rate_chip">%1$d%%</string>
+    <string name="discount_rate_custom">Rate</string>
+    <string name="discount_rate_error">Enter a rate like 20 or 17.5</string>
+    <string name="discount_rate_applied">at %1$s%%</string>
+    <string name="discount_headline_pay">you pay</string>
+    <string name="discount_headline_total">total to pay</string>
+    <string name="discount_headline_net">before tax</string>
+    <string name="discount_row_original">Original</string>
+    <string name="discount_row_saved">You save</string>
+    <string name="discount_row_net">Before tax</string>
+    <string name="discount_row_gross">Including tax</string>
+    <string name="discount_row_tax">Tax</string>
+    <string name="discount_empty_hint">Enter an amount to see the result</string>
+
+    <!-- Time Zones -->
+    <string name="time_zones_title">Time Zones</string>
+    <string name="time_zones_tagline">What time is it everywhere else</string>
+    <string name="time_zones_time">Time</string>
+    <string name="time_zones_time_format">14:30</string>
+    <string name="time_zones_time_error">Use the form 14:30</string>
+    <string name="time_zones_reference">In</string>
+    <string name="time_zones_now">Now</string>
+    <string name="time_zones_next_day">next day</string>
+    <string name="time_zones_previous_day">previous day</string>
+    <string name="time_zones_empty_hint">Enter a time to compare</string>
+
+    <!-- WiFi QR -->
+    <string name="wifi_qr_title">WiFi QR</string>
+    <string name="wifi_qr_tagline">Share your network without reading it out</string>
+    <string name="wifi_qr_ssid">Network name</string>
+    <string name="wifi_qr_password">Password</string>
+    <string name="wifi_qr_security">Security</string>
+    <string name="wifi_qr_wpa">WPA/WPA2</string>
+    <string name="wifi_qr_wep">WEP</string>
+    <string name="wifi_qr_open">Open</string>
+    <string name="wifi_qr_hidden">Hidden network</string>
+    <string name="wifi_qr_show">Show</string>
+    <string name="wifi_qr_hide">Hide</string>
+    <string name="wifi_qr_empty_hint">Enter your network name to make a code</string>
+    <string name="wifi_qr_needs_password">Enter the password, or switch to Open.</string>
+    <string name="wifi_qr_too_long">That network name and password will not fit in one code.</string>
+    <string name="wifi_qr_note">Nothing here is saved. Point another phone\u2019s camera at the code to join.</string>
+    <string name="cd_wifi_qr_code">The generated WiFi QR code</string>
+
     <!-- Shared -->
     <string name="options_add">Add</string>
     <string name="options_error_duplicate">That is already in the list.</string>

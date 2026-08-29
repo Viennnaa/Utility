@@ -5,6 +5,7 @@ import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import java.util.Locale
 
 class UnitConverterLogicTest {
 
@@ -111,6 +112,19 @@ class UnitConverterLogicTest {
         assertEquals("0", formatValue(0.0))
         assertEquals("-40", formatValue(-40.0))
         assertTrue(formatValue(1.0 / 3.0).startsWith("0.3333"))
+    }
+
+    @Test
+    fun `formatValue is unaffected by a comma-decimal default locale`() {
+        val original = Locale.getDefault()
+        try {
+            Locale.setDefault(Locale.GERMANY)
+            assertEquals("25", formatValue(25.0))
+            assertEquals("2.5", formatValue(2.5))
+            assertEquals("-40", formatValue(-40.0))
+        } finally {
+            Locale.setDefault(original)
+        }
     }
 
     @Test

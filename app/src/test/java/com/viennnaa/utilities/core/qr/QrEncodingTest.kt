@@ -1,4 +1,4 @@
-package com.viennnaa.utilities.feature.qrgen
+package com.viennnaa.utilities.core.qr
 
 import com.google.zxing.BinaryBitmap
 import com.google.zxing.MultiFormatReader
@@ -38,7 +38,7 @@ private fun decode(matrix: BitMatrix): String? = try {
     null
 }
 
-class QrGenLogicTest {
+class QrEncodingTest {
 
     @Test
     fun `an encoded code reads back as the same text`() {
