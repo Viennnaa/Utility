@@ -6,6 +6,15 @@
     <string name="home_title">Utilities</string>
     <string name="home_subtitle">Small tools, one app</string>
     <string name="cd_back">Back</string>
+    <string name="home_search_hint">Search mini apps</string>
+    <string name="home_no_results">No mini app matches \u201c%1$s\u201d</string>
+    <string name="cd_home_clear_search">Clear search</string>
+
+    <!-- Categories -->
+    <string name="category_decide">Decide</string>
+    <string name="category_calculate">Calculate</string>
+    <string name="category_text_and_codes">Text and codes</string>
+    <string name="category_device">Device</string>
 
     <!-- Random Number -->
     <string name="random_number_title">Random Number</string>
