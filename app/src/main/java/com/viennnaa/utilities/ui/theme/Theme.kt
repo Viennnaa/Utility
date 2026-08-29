@@ -12,6 +12,8 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import com.viennnaa.utilities.core.settings.ThemeMode
+import com.viennnaa.utilities.core.settings.resolveDark
 
 private val LightColors = lightColorScheme(
     primary = PrimaryLight,
@@ -81,13 +83,19 @@ val LocalExtendedColors = staticCompositionLocalOf {
 val extendedColors: ExtendedColors
     @Composable get() = LocalExtendedColors.current
 
+/**
+ * @param themeMode what the user chose in Settings. [ThemeMode.SYSTEM] follows
+ *   the device; an explicit light or dark choice overrides it.
+ * @param dynamicColor Material You colours from the wallpaper, on Android 12 and
+ *   above. Mini app accents stay fixed either way, so tiles keep their identity.
+ */
 @Composable
 fun UtilitiesTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+.
+    themeMode: ThemeMode = ThemeMode.SYSTEM,
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit,
 ) {
+    val darkTheme = themeMode.resolveDark(isSystemInDarkTheme())
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current

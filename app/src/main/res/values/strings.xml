@@ -4,11 +4,13 @@
 
     <!-- Home -->
     <string name="home_title">Utilities</string>
-    <string name="home_subtitle">Small tools, one app</string>
     <string name="cd_back">Back</string>
     <string name="home_search_hint">Search mini apps</string>
     <string name="home_no_results">No mini app matches \u201c%1$s\u201d</string>
     <string name="cd_home_clear_search">Clear search</string>
+    <string name="home_favourites">Favourites</string>
+    <string name="home_pin_hint">Press and hold a tile to pin it to the top.</string>
+    <string name="cd_home_pinned">Pinned</string>
 
     <!-- Categories -->
     <string name="category_decide">Decide</string>
@@ -345,6 +347,23 @@
     <string name="wifi_qr_too_long">That network name and password will not fit in one code.</string>
     <string name="wifi_qr_note">Nothing here is saved. Point another phone\u2019s camera at the code to join.</string>
     <string name="cd_wifi_qr_code">The generated WiFi QR code</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_dynamic_color">Colours from your wallpaper</string>
+    <string name="settings_dynamic_color_summary">Use the device palette instead of the built-in one.</string>
+    <string name="settings_home">Home screen</string>
+    <string name="settings_favourites_summary">Press and hold a tile to pin it. Up to %1$d can be pinned.</string>
+    <string name="settings_clear_favourites">Unpin all %1$d</string>
+    <string name="settings_about">About</string>
+    <string name="settings_version">Version</string>
+    <string name="settings_mini_apps">Mini apps</string>
+    <string name="settings_offline_note">Everything runs on the device. Nothing here needs a network connection.</string>
 
     <!-- Shared -->
     <string name="options_add">Add</string>
