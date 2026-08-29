@@ -14,4 +14,10 @@ object MiniAppIds {
     const val DICE_ROLLER = "dice-roller"
     const val TEAM_SPLITTER = "team-splitter"
     const val TIP_SPLITTER = "tip-splitter"
+    const val PASSWORD_GEN = "password-generator"
+    const val RPS = "rock-paper-scissors"
+    const val UNIT_CONVERTER = "unit-converter"
+    const val PERCENTAGE = "percentage"
+    const val DATE_CALC = "date-calculator"
+    const val TEXT_TOOLS = "text-tools"
 }

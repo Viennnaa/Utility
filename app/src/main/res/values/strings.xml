@@ -104,6 +104,110 @@
     <string name="tip_splitter_summary_tip">Tip</string>
     <string name="tip_splitter_summary_total">Total</string>
 
+    <!-- Password Generator -->
+    <string name="password_gen_title">Password Generator</string>
+    <string name="password_gen_tagline">Strong passwords, made on the device</string>
+    <string name="password_gen_length">Length: %1$d</string>
+    <string name="password_gen_sets_heading">Include</string>
+    <string name="password_gen_set_lower">a-z</string>
+    <string name="password_gen_set_upper">A-Z</string>
+    <string name="password_gen_set_digits">0-9</string>
+    <string name="password_gen_set_symbols">Symbols</string>
+    <string name="password_gen_generate">Generate</string>
+    <string name="password_gen_generate_again">Generate again</string>
+    <string name="password_gen_empty_hint">Tap Generate for a new password</string>
+    <string name="password_gen_no_sets">Choose at least one kind of character.</string>
+    <string name="password_gen_strength_weak">Weak \u00b7 about %1$d bits</string>
+    <string name="password_gen_strength_fair">Fair \u00b7 about %1$d bits</string>
+    <string name="password_gen_strength_strong">Strong \u00b7 about %1$d bits</string>
+    <string name="password_gen_strength_excellent">Excellent \u00b7 about %1$d bits</string>
+
+    <!-- Rock Paper Scissors -->
+    <string name="rps_title">Rock Paper Scissors</string>
+    <string name="rps_tagline">Best of anything, against the phone</string>
+    <string name="rps_versus">vs</string>
+    <string name="rps_thinking">Thinking\u2026</string>
+    <string name="rps_empty_hint">Pick your move</string>
+    <string name="rps_win">You win</string>
+    <string name="rps_lose">You lose</string>
+    <string name="rps_draw">Draw</string>
+    <string name="rps_score">%1$d won \u00b7 %2$d lost \u00b7 %3$d drawn</string>
+
+    <!-- Unit Converter -->
+    <string name="unit_converter_title">Unit Converter</string>
+    <string name="unit_converter_tagline">Length, mass, temperature and volume</string>
+    <string name="unit_converter_category_heading">Measuring</string>
+    <string name="unit_converter_length">Length</string>
+    <string name="unit_converter_mass">Mass</string>
+    <string name="unit_converter_temperature">Temperature</string>
+    <string name="unit_converter_volume">Volume</string>
+    <string name="unit_converter_value">Amount</string>
+    <string name="unit_converter_value_error">Enter a number like 12.5</string>
+    <string name="unit_converter_from">From</string>
+    <string name="unit_converter_to">To</string>
+    <string name="unit_converter_summary">%1$s %2$s is</string>
+    <string name="unit_converter_empty_hint">Enter an amount to convert</string>
+
+    <!-- Percentage -->
+    <string name="percentage_title">Percentage</string>
+    <string name="percentage_tagline">Of, out of, and change</string>
+    <string name="percentage_mode_of">Percent of</string>
+    <string name="percentage_mode_what">Is what percent</string>
+    <string name="percentage_mode_change">Percent change</string>
+    <string name="percentage_field_percent">Percent</string>
+    <string name="percentage_field_value">Of value</string>
+    <string name="percentage_field_part">Part</string>
+    <string name="percentage_field_whole">Whole</string>
+    <string name="percentage_field_from">From</string>
+    <string name="percentage_field_to">To</string>
+    <string name="percentage_result_of">of that value</string>
+    <string name="percentage_result_what">of the whole</string>
+    <string name="percentage_result_change">change</string>
+    <string name="percentage_empty_hint">Fill both fields to see the answer</string>
+    <string name="percentage_undefined_whole">Nothing can be a share of zero.</string>
+    <string name="percentage_undefined_from">There is no percentage change from zero.</string>
+
+    <!-- Date Calculator -->
+    <string name="date_calc_title">Date Calculator</string>
+    <string name="date_calc_tagline">Days between, countdowns and age</string>
+    <string name="date_calc_mode_between">Between</string>
+    <string name="date_calc_mode_add">Add days</string>
+    <string name="date_calc_mode_age">Age</string>
+    <string name="date_calc_from">From</string>
+    <string name="date_calc_to">To</string>
+    <string name="date_calc_date">Date</string>
+    <string name="date_calc_birth">Date of birth</string>
+    <string name="date_calc_days">Days</string>
+    <string name="date_calc_format">2026-08-29</string>
+    <string name="date_calc_format_error">Use the form 2026-08-29</string>
+    <string name="date_calc_days_count">%1$d days</string>
+    <string name="date_calc_weeks_detail">%1$d weeks and %2$d days</string>
+    <string name="date_calc_weekday">Lands on a %1$s</string>
+    <string name="date_calc_years">%1$d years</string>
+    <string name="date_calc_age_detail">and %1$d months, %2$d days</string>
+    <string name="date_calc_between_hint">Enter both dates</string>
+    <string name="date_calc_add_hint">Enter a date and a number of days</string>
+    <string name="date_calc_age_hint">Enter a date of birth</string>
+    <string name="date_calc_future_birth">That date has not happened yet.</string>
+
+    <!-- Text Tools -->
+    <string name="text_tools_title">Text Tools</string>
+    <string name="text_tools_tagline">Change case, count, tidy up</string>
+    <string name="text_tools_input">Text</string>
+    <string name="text_tools_placeholder">Paste or type anything</string>
+    <string name="text_tools_transform_heading">Transform</string>
+    <string name="text_tools_uppercase">UPPER</string>
+    <string name="text_tools_lowercase">lower</string>
+    <string name="text_tools_title_case">Title Case</string>
+    <string name="text_tools_sentence_case">Sentence case</string>
+    <string name="text_tools_reverse">Reverse</string>
+    <string name="text_tools_collapse">Tidy spaces</string>
+    <string name="text_tools_no_breaks">One line</string>
+    <string name="text_tools_stat_characters">chars</string>
+    <string name="text_tools_stat_no_spaces">no spaces</string>
+    <string name="text_tools_stat_words">words</string>
+    <string name="text_tools_stat_lines">lines</string>
+
     <!-- Shared -->
     <string name="options_add">Add</string>
     <string name="options_error_duplicate">That is already in the list.</string>
@@ -112,4 +216,5 @@
     <string name="cd_stepper_decrease">Decrease %1$s</string>
     <string name="cd_stepper_increase">Increase %1$s</string>
     <string name="action_clear">Clear</string>
+    <string name="action_copy">Copy</string>
 </resources>

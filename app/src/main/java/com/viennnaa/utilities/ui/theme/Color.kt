@@ -62,6 +62,12 @@ val AccentListPicker = Color(0xFF0EA5A5)
 val AccentDiceRoller = Color(0xFFA855F7)
 val AccentTeamSplitter = Color(0xFF2E7D32)
 val AccentTipSplitter = Color(0xFFD97706)
+val AccentPasswordGen = Color(0xFF475569)
+val AccentRps = Color(0xFFEC4899)
+val AccentUnitConverter = Color(0xFF0284C7)
+val AccentPercentage = Color(0xFF7C3AED)
+val AccentDateCalc = Color(0xFF059669)
+val AccentTextTools = Color(0xFF64748B)
 
 // "Yes" / "No" answer colors, tuned per theme so both stay readable.
 internal val YesLight = Color(0xFF1E7A46)
