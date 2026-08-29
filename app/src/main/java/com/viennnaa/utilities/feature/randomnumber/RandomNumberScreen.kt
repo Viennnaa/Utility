@@ -28,6 +28,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -48,12 +49,18 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.viennnaa.utilities.R
+import com.viennnaa.utilities.core.storage.rememberMiniAppPreferences
+import com.viennnaa.utilities.miniapp.MiniAppIds
 import com.viennnaa.utilities.ui.components.MiniAppScaffold
 import com.viennnaa.utilities.ui.theme.ResultTextStyle
 import com.viennnaa.utilities.ui.theme.UtilitiesTheme
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+
+private const val KEY_PRESET = "preset"
+private const val KEY_MIN = "min"
+private const val KEY_MAX = "max"
 
 /** Marks "no preset selected" — the custom range fields are in charge instead. */
 private const val CUSTOM_RANGE = -1
@@ -77,6 +84,25 @@ fun RandomNumberScreen(onBack: () -> Unit) {
 
     val scope = rememberCoroutineScope()
     val haptics = LocalHapticFeedback.current
+
+    // The chosen range is a preference worth keeping; the rolls themselves are not.
+    val prefs = rememberMiniAppPreferences(MiniAppIds.RANDOM_NUMBER)
+    var restored by rememberSaveable { mutableStateOf(false) }
+    LaunchedEffect(Unit) {
+        if (!restored) {
+            selectedPreset = prefs.getInt(KEY_PRESET, selectedPreset)
+            minText = prefs.getString(KEY_MIN, minText)
+            maxText = prefs.getString(KEY_MAX, maxText)
+            restored = true
+        }
+    }
+    LaunchedEffect(restored, selectedPreset, minText, maxText) {
+        if (restored) {
+            prefs.setInt(KEY_PRESET, selectedPreset)
+            prefs.setString(KEY_MIN, minText)
+            prefs.setString(KEY_MAX, maxText)
+        }
+    }
 
     val validation = remember(minText, maxText) { validateRange(minText, maxText) }
     // getOrNull, not [], so a saved index that no longer exists (presets changed

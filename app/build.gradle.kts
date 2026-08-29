@@ -56,6 +56,7 @@ dependencies {
     // does not disappear if that ever changes.
     implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.datastore.preferences)
 
     testImplementation(libs.junit)
 

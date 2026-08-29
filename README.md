@@ -25,7 +25,8 @@ light and dark themes).
 ./gradlew installDebug       # install on a connected device or emulator
 ```
 
-Requires the Android SDK (compileSdk 35) and JDK 17+. Minimum supported device is
+CI builds and tests every push, so `main` and feature branches are always known to
+compile. Requires the Android SDK (compileSdk 35) and JDK 17+. Minimum supported device is
 Android 8.0 (API 26).
 
 ## Project layout
@@ -37,7 +38,9 @@ app/src/main/java/com/viennnaa/utilities/
 ├── miniapp/
 │   ├── MiniApp.kt               what a mini app is
 │   └── MiniAppCatalog.kt        the registry — every mini app is listed here
-├── core/options/                list-editing rules shared by the list-building mini apps
+├── core/
+│   ├── options/                 list-editing rules shared by the list-building mini apps
+│   └── storage/                 DataStore-backed per mini app settings
 ├── feature/                     one folder per mini app, each a *Logic.kt + *Screen.kt
 │   ├── randomnumber/
 │   ├── choicemaker/

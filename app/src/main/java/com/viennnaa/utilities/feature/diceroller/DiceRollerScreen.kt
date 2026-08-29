@@ -26,6 +26,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -45,6 +46,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.viennnaa.utilities.R
+import com.viennnaa.utilities.core.storage.rememberMiniAppPreferences
+import com.viennnaa.utilities.miniapp.MiniAppIds
 import com.viennnaa.utilities.ui.components.CountStepper
 import com.viennnaa.utilities.ui.components.MiniAppScaffold
 import com.viennnaa.utilities.ui.theme.ResultTextStyle
@@ -52,6 +55,9 @@ import com.viennnaa.utilities.ui.theme.UtilitiesTheme
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+
+private const val KEY_SIDES = "sides"
+private const val KEY_COUNT = "count"
 
 /** Throws flashed before the dice settle, and the gap between them. */
 private const val ROLL_FRAMES = 9
@@ -71,6 +77,23 @@ fun DiceRollerScreen(onBack: () -> Unit) {
 
     val scope = rememberCoroutineScope()
     val haptics = LocalHapticFeedback.current
+
+    // Which dice you reach for is a preference; what they landed on is not.
+    val prefs = rememberMiniAppPreferences(MiniAppIds.DICE_ROLLER)
+    var restored by rememberSaveable { mutableStateOf(false) }
+    LaunchedEffect(Unit) {
+        if (!restored) {
+            sides = prefs.getInt(KEY_SIDES, sides)
+            count = clampDiceCount(prefs.getInt(KEY_COUNT, count))
+            restored = true
+        }
+    }
+    LaunchedEffect(restored, sides, count) {
+        if (restored) {
+            prefs.setInt(KEY_SIDES, sides)
+            prefs.setInt(KEY_COUNT, count)
+        }
+    }
 
     fun roll() {
         rollJob?.cancel()

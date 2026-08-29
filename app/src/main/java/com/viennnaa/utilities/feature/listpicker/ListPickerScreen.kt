@@ -24,6 +24,7 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -46,6 +47,8 @@ import com.viennnaa.utilities.R
 import com.viennnaa.utilities.core.options.addOption
 import com.viennnaa.utilities.core.options.rejectionFor
 import com.viennnaa.utilities.core.options.removeOption
+import com.viennnaa.utilities.core.storage.rememberMiniAppPreferences
+import com.viennnaa.utilities.miniapp.MiniAppIds
 import com.viennnaa.utilities.ui.components.MiniAppScaffold
 import com.viennnaa.utilities.ui.components.OptionEditor
 import com.viennnaa.utilities.ui.theme.ResultTextStyle
@@ -53,6 +56,9 @@ import com.viennnaa.utilities.ui.theme.UtilitiesTheme
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+
+private const val KEY_OPTIONS = "options"
+private const val KEY_REMOVE_AFTER_PICK = "removeAfterPick"
 
 /** Options flashed before the pick settles, and the gap between them. */
 private const val PICK_FRAMES = 9
@@ -76,6 +82,23 @@ fun ListPickerScreen(onBack: () -> Unit) {
 
     val scope = rememberCoroutineScope()
     val haptics = LocalHapticFeedback.current
+
+    // The options are the user's own data, so they outlive the process. Picks do not.
+    val prefs = rememberMiniAppPreferences(MiniAppIds.LIST_PICKER)
+    var restored by rememberSaveable { mutableStateOf(false) }
+    LaunchedEffect(Unit) {
+        if (!restored) {
+            options = prefs.getStringList(KEY_OPTIONS)
+            removeAfterPick = prefs.getBoolean(KEY_REMOVE_AFTER_PICK, removeAfterPick)
+            restored = true
+        }
+    }
+    LaunchedEffect(restored, options, removeAfterPick) {
+        if (restored) {
+            prefs.setStringList(KEY_OPTIONS, options)
+            prefs.setBoolean(KEY_REMOVE_AFTER_PICK, removeAfterPick)
+        }
+    }
 
     val rejection = rejectionFor(options, draft)
 

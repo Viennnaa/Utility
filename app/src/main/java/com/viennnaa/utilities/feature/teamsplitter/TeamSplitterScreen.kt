@@ -17,6 +17,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -33,10 +34,15 @@ import com.viennnaa.utilities.R
 import com.viennnaa.utilities.core.options.addOption
 import com.viennnaa.utilities.core.options.rejectionFor
 import com.viennnaa.utilities.core.options.removeOption
+import com.viennnaa.utilities.core.storage.rememberMiniAppPreferences
+import com.viennnaa.utilities.miniapp.MiniAppIds
 import com.viennnaa.utilities.ui.components.CountStepper
 import com.viennnaa.utilities.ui.components.MiniAppScaffold
 import com.viennnaa.utilities.ui.components.OptionEditor
 import com.viennnaa.utilities.ui.theme.UtilitiesTheme
+
+private const val KEY_NAMES = "names"
+private const val KEY_TEAM_COUNT = "teamCount"
 
 /** Splitting one name between teams is not a split, so two is the floor. */
 private const val MIN_NAMES_TO_SPLIT = 2
@@ -52,6 +58,23 @@ fun TeamSplitterScreen(onBack: () -> Unit) {
 
     val haptics = LocalHapticFeedback.current
     val rejection = rejectionFor(names, draft)
+
+    // Typing a roster is real work, so it is kept. The dealt teams are not.
+    val prefs = rememberMiniAppPreferences(MiniAppIds.TEAM_SPLITTER)
+    var restored by rememberSaveable { mutableStateOf(false) }
+    LaunchedEffect(Unit) {
+        if (!restored) {
+            names = prefs.getStringList(KEY_NAMES)
+            teamCount = clampTeamCount(prefs.getInt(KEY_TEAM_COUNT, teamCount))
+            restored = true
+        }
+    }
+    LaunchedEffect(restored, names, teamCount) {
+        if (restored) {
+            prefs.setStringList(KEY_NAMES, names)
+            prefs.setInt(KEY_TEAM_COUNT, teamCount)
+        }
+    }
 
     fun add() {
         if (rejection == null) {

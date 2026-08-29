@@ -20,6 +20,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -34,10 +35,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.viennnaa.utilities.R
+import com.viennnaa.utilities.core.storage.rememberMiniAppPreferences
+import com.viennnaa.utilities.miniapp.MiniAppIds
 import com.viennnaa.utilities.ui.components.CountStepper
 import com.viennnaa.utilities.ui.components.MiniAppScaffold
 import com.viennnaa.utilities.ui.theme.ResultTextStyle
 import com.viennnaa.utilities.ui.theme.UtilitiesTheme
+
+private const val KEY_TIP_PERCENT = "tipPercent"
+private const val KEY_PEOPLE = "people"
 
 @Composable
 fun TipSplitterScreen(onBack: () -> Unit) {
@@ -51,6 +57,23 @@ fun TipSplitterScreen(onBack: () -> Unit) {
     }
     // An empty field is waiting for input, not an error.
     val showError = billText.isNotBlank() && billCents == null
+
+    // Your usual tip and party size carry over; the bill is per meal.
+    val prefs = rememberMiniAppPreferences(MiniAppIds.TIP_SPLITTER)
+    var restored by rememberSaveable { mutableStateOf(false) }
+    LaunchedEffect(Unit) {
+        if (!restored) {
+            tipPercent = prefs.getInt(KEY_TIP_PERCENT, tipPercent)
+            people = clampPeople(prefs.getInt(KEY_PEOPLE, people))
+            restored = true
+        }
+    }
+    LaunchedEffect(restored, tipPercent, people) {
+        if (restored) {
+            prefs.setInt(KEY_TIP_PERCENT, tipPercent)
+            prefs.setInt(KEY_PEOPLE, people)
+        }
+    }
 
     MiniAppScaffold(
         title = stringResource(R.string.tip_splitter_title),

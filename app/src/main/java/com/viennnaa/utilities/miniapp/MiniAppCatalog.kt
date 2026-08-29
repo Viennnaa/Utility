@@ -22,7 +22,7 @@ import com.viennnaa.utilities.ui.theme.AccentTipSplitter
  */
 val MiniAppCatalog: List<MiniApp> = listOf(
     MiniApp(
-        id = "random-number",
+        id = MiniAppIds.RANDOM_NUMBER,
         titleRes = R.string.random_number_title,
         taglineRes = R.string.random_number_tagline,
         emoji = "🔢",
@@ -30,7 +30,7 @@ val MiniAppCatalog: List<MiniApp> = listOf(
         screen = { onBack -> RandomNumberScreen(onBack = onBack) },
     ),
     MiniApp(
-        id = "choice-maker",
+        id = MiniAppIds.CHOICE_MAKER,
         titleRes = R.string.choice_maker_title,
         taglineRes = R.string.choice_maker_tagline,
         emoji = "🤔",
@@ -38,7 +38,7 @@ val MiniAppCatalog: List<MiniApp> = listOf(
         screen = { onBack -> ChoiceMakerScreen(onBack = onBack) },
     ),
     MiniApp(
-        id = "list-picker",
+        id = MiniAppIds.LIST_PICKER,
         titleRes = R.string.list_picker_title,
         taglineRes = R.string.list_picker_tagline,
         emoji = "🎯",
@@ -46,7 +46,7 @@ val MiniAppCatalog: List<MiniApp> = listOf(
         screen = { onBack -> ListPickerScreen(onBack = onBack) },
     ),
     MiniApp(
-        id = "dice-roller",
+        id = MiniAppIds.DICE_ROLLER,
         titleRes = R.string.dice_roller_title,
         taglineRes = R.string.dice_roller_tagline,
         emoji = "🎲",
@@ -54,7 +54,7 @@ val MiniAppCatalog: List<MiniApp> = listOf(
         screen = { onBack -> DiceRollerScreen(onBack = onBack) },
     ),
     MiniApp(
-        id = "team-splitter",
+        id = MiniAppIds.TEAM_SPLITTER,
         titleRes = R.string.team_splitter_title,
         taglineRes = R.string.team_splitter_tagline,
         emoji = "👥",
@@ -62,7 +62,7 @@ val MiniAppCatalog: List<MiniApp> = listOf(
         screen = { onBack -> TeamSplitterScreen(onBack = onBack) },
     ),
     MiniApp(
-        id = "tip-splitter",
+        id = MiniAppIds.TIP_SPLITTER,
         titleRes = R.string.tip_splitter_title,
         taglineRes = R.string.tip_splitter_tagline,
         emoji = "💸",

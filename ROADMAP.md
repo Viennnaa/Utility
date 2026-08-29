@@ -44,9 +44,9 @@ we start editing the manifest, so those are held until the core set is in.
 
 Both of these get more expensive the longer they wait.
 
-- [ ] **Persistence (DataStore)** — history currently lives in `rememberSaveable`, so it
-      survives rotation but dies with the process. **This is now the next thing to do:**
-      there are six mini apps, and the retrofit cost only grows from here
+- [x] **Persistence (DataStore)** — each mini app keeps the settings the user built up
+      (option lists, rosters, preferred dice, usual tip) in one namespaced DataStore.
+      Results and history stay deliberately transient
 - [ ] **Home screen structure** — categories or favourites in `MiniAppCatalog`. A flat
       grid is fine up to roughly 8 tiles
 - [ ] **Deep links / launcher shortcuts** — one per mini app; `MiniApp.id` is already the
@@ -55,10 +55,9 @@ Both of these get more expensive the longer they wait.
 
 ## Open items
 
-- [ ] **Verify the Compose UI compiles.** It has never been through a compiler: the
-      environment these screens were written in blocks the Android SDK host, so only the
-      `*Logic.kt` files and their unit tests are verified. Run `./gradlew assembleDebug`
-      before stacking more screens
+- [x] **Verify the Compose UI compiles.** Done, and no longer a manual step: CI builds
+      and tests every push (`.github/workflows/android.yml`), since GitHub's runners have
+      the Android SDK that the authoring environment does not
 - [ ] **Instrumented tests** — the dependencies are declared, nothing is written yet
 
 ## Conventions
@@ -70,6 +69,8 @@ Both of these get more expensive the longer they wait.
   navigation route both come from the entry
 - `MiniApp.id` is the navigation route. Never change one after it ships
 - User-facing text goes in `res/values/strings.xml`
+- Settings a user built up belong in `MiniAppPreferences`, keyed by `MiniAppIds`. Results
+  and history stay in `rememberSaveable` — they are meant to be transient
 - Reusable pieces live outside `feature/`: list-editing rules in `core/options/`, and the
   `OptionEditor` / `CountStepper` / `MiniAppScaffold` composables in `ui/components/`.
   Reach for those before writing a third copy of something
