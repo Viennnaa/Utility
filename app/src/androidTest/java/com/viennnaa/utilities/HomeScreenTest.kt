@@ -58,8 +58,8 @@ class HomeScreenTest {
     @Test
     fun searchMatchesTaglinesNotJustTitles() {
         showHome()
-        // "coin flip" appears only in Choice Maker's tagline.
-        search("coin flip")
+        // "settle" appears only in Choice Maker's tagline, never in a title.
+        search("settle")
         compose.onNodeWithText("Choice Maker").assertIsDisplayed()
     }
 

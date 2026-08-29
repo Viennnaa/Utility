@@ -28,10 +28,14 @@ class MiniAppNavigationTest {
      * Opens a mini app by searching for it first. With nineteen tiles most are
      * scrolled out of the grid, and a node that is not composed cannot be
      * clicked, so search is the reliable way to reach one.
+     *
+     * The query is lowercased so it does not collide with the tile: text
+     * matching is case-sensitive and covers editable text, so typing the title
+     * exactly would match the search field as well and leave two candidates.
      */
     private fun openMiniApp(title: String) {
         compose.onNode(hasSetTextAction()).performTextClearance()
-        compose.onNode(hasSetTextAction()).performTextInput(title)
+        compose.onNode(hasSetTextAction()).performTextInput(title.lowercase())
         compose.onNodeWithText(title).performClick()
     }
 
